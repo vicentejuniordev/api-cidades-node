@@ -5,4 +5,7 @@
         "rootDir": "./src",
         "outDir": "./dist"
         },
+    "exclude": [
+        "eslint.config.mts"
+    ]
 }
