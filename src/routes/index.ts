@@ -1,5 +1,7 @@
 import {Router} from "express";
 import {StatusCodes} from "http-status-codes";
+import "dotenv/config";
+
 const router = Router();
 
 router.get('/', (_, res)=>{
