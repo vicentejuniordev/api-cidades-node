@@ -1,6 +1,6 @@
+import "./shared/services/yup-translation";
 import express from 'express';
-import { router } from '../routes';
-
+import { router } from './routes';
 const server = express();
 
 server.use(express.json());
