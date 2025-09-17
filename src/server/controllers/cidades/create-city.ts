@@ -8,16 +8,21 @@ interface Icidade {
   estado: string
 }
 
+interface Ifilter {
+  filter: string,
 
-export const createValidation = validation({
-  body: yup.object().shape({
+}
+
+
+export const createValidation = validation((getSchema)=>({
+  body: getSchema<Icidade>(yup.object().shape({
     nome: yup.string().required().min(3),
-    estado: yup.string().required().min(2),
-  }),
-  query: yup.object().shape({
-    filter: yup.string().required().min(3)
-  })
-});
+    estado: yup.string().required().min(2)
+  })),
+  query: getSchema<Ifilter>(yup.object().shape({
+    filter: yup.string().required().min(2)
+  })),
+}));
 
 
 

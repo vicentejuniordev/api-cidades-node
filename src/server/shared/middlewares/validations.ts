@@ -5,14 +5,17 @@ import * as yup from "yup";
 
 
 type Tproperty = "header" | "body" | "query" | "params";
+type TGetSchema = <T>(schema: ObjectSchema<T>) => ObjectSchema<T>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TAllschemas = Record<Tproperty, ObjectSchema<any>>
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Tvalidation = (schema: Partial<TAllschemas>) => RequestHandler;
+type TGetAllSchemas = (getSchema: TGetSchema) => Partial<TAllschemas>;
 
-export const validation: Tvalidation = (schemas) => async (req, res, next) => {
+type Tvalidation = (getAllSchemas: TGetAllSchemas) => RequestHandler;
+
+export const validation: Tvalidation = (geTAllSchemas) => async (req, res, next) => {
+  const schemas = geTAllSchemas(schema=> schema);
   const allErrors: Record<string, Record<string, string>> = {};
   Object.entries(schemas).forEach(([key, schema]) => {
     try {

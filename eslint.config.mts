@@ -11,6 +11,7 @@ export default defineConfig([
   rules:{
     "semi": ["error", "always"],
     "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
   }
 },
   tseslint.configs.recommended,
