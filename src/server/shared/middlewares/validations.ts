@@ -4,23 +4,37 @@ import { ObjectSchema } from "yup";
 import * as yup from "yup";
 
 
+type Tproperty = "header" | "body" | "query" | "params";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Tvalidation = (field:"header"| "body" | "query" | "params",schema: ObjectSchema<any>) => RequestHandler;
+type TAllschemas = Record<Tproperty, ObjectSchema<any>>
 
-export const validation: Tvalidation = (field, schema) => async (req, res, next) =>{
-  try {
-    await schema.validate(req[field], {abortEarly:false});
-    next();
-  } catch (error) {
-    const yupError = error as yup.ValidationError;
-    const errors : Record<string, string> = {};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Tvalidation = (schema: Partial<TAllschemas>) => RequestHandler;
 
-    yupError.inner.forEach(error=>{
-      if(error.path === undefined) return;
-      errors[error.path] = error.message;
-    });
+export const validation: Tvalidation = (schemas) => async (req, res, next) => {
+  const allErrors: Record<string, Record<string, string>> = {};
+  Object.entries(schemas).forEach(([key, schema]) => {
+    try {
+      schema.validateSync(req[key], { abortEarly: false });
+      next();
+    } catch (error) {
+      const yupError = error as yup.ValidationError;
+      const errors: Record<string, string> = {};
 
-    return res.status(StatusCodes.BAD_REQUEST).json({errors});
+      yupError.inner.forEach(error => {
+        if (error.path === undefined) return;
+        errors[error.path] = error.message;
+      });
 
+      allErrors[key]= errors;
+
+    }
+  });
+
+  if(Object.entries(allErrors).length === 0){
+    return next();
+  }else{
+    return res.status(StatusCodes.BAD_REQUEST).json({ allErrors });
   }
 };
