@@ -20,7 +20,6 @@ export const validation: Tvalidation = (geTAllSchemas) => async (req, res, next)
   Object.entries(schemas).forEach(([key, schema]) => {
     try {
       schema.validateSync(req[key], { abortEarly: false });
-      next();
     } catch (error) {
       const yupError = error as yup.ValidationError;
       const errors: Record<string, string> = {};

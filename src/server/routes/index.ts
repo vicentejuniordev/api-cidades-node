@@ -7,7 +7,7 @@ const router = Router();
 router.get('/', (_, res)=>{
     return res.json({msg: "Olá Devs"});
 });
-
+router.get('/cidades', citiesControllers.getAllValidation, citiesControllers.getAll);
 router.post('/cidades', citiesControllers.createValidation, citiesControllers.create);
 
 export {router};
