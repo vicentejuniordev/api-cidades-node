@@ -6,6 +6,8 @@
         "outDir": "./build"
         },
     "exclude": [
-        "eslint.config.mts"
+        "eslint.config.mts",
+        "jest.config.ts",
+        "./tests"
     ]
 }
