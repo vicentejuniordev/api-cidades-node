@@ -8,6 +8,9 @@
     "exclude": [
         "eslint.config.mts",
         "jest.config.ts",
-        "./tests"
+        "./tests",
+        "./build",
+        "./node_modules"
+
     ]
 }
