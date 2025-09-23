@@ -20,7 +20,6 @@ export const getAllValidation = validation((getSchema)=>({
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export const getAll = async (req: Request<{},{},{}, IQueryParams>, res: Response) =>{
-  console.log(req.query);
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
+  return res.status(StatusCodes.OK).send('Não implementado');
 };

@@ -14,7 +14,17 @@ export const deleteByIdValidation = validation((getSchema)=>({
 }));
 
 export const deleteById = async (req: Request<IParamProps>, res: Response) =>{
-  console.log(req.params);
+  const id = Number(req.params.id);
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Não implementado");
+  if(id > 3){
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      erros:{
+        default: 'registro não encontrado'
+      }
+    });
+  }
+  
+
+
+  return res.status(StatusCodes.OK).send("Não implementado");
 };

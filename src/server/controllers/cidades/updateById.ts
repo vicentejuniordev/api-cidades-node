@@ -24,7 +24,14 @@ export const updateByIdValidation = validation((getSchema)=>({
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res:Response ) =>{
   console.log(req.params);
+  const id = Number(req.params.id);
   console.log(req.body);
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Não Implementdo");
+  if(id > 3){
+    return res.status(StatusCodes.NOT_FOUND).json({error:{default:'Registro não existe'}});
+
+  }
+
+
+  return res.status(StatusCodes.OK).send("Não Implementado");
 };

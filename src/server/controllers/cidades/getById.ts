@@ -14,7 +14,12 @@ export const getByIdValidation = validation((getSchema)=>({
 }));
 
 export const getById = async( req: Request<IParamProps>, res: Response) =>{
-  console.log(req.params.id);
+  const id = Number(req.params.id);
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Não implementado");
+  console.log(req.params.id);
+  if(id != 3){
+    return res.status(StatusCodes.NOT_FOUND).json({error:{default:'registro não encontrado'}});
+  }
+
+  return res.status(StatusCodes.OK).send("Não implementado");
 };
