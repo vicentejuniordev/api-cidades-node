@@ -33,5 +33,5 @@ export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res:
   }
 
 
-  return res.status(StatusCodes.OK).send("Não Implementado");
+  return res.status(StatusCodes.NO_CONTENT).send();
 };

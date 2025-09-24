@@ -17,7 +17,7 @@ export const deleteById = async (req: Request<IParamProps>, res: Response) =>{
   const id = Number(req.params.id);
 
   if(id > 3){
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    return res.status(StatusCodes.NOT_FOUND).json({
       erros:{
         default: 'registro não encontrado'
       }
@@ -26,5 +26,5 @@ export const deleteById = async (req: Request<IParamProps>, res: Response) =>{
   
 
 
-  return res.status(StatusCodes.OK).send("Não implementado");
+  return res.status(StatusCodes.NO_CONTENT).send();
 };

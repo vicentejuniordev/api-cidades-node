@@ -21,5 +21,5 @@ export const getById = async( req: Request<IParamProps>, res: Response) =>{
     return res.status(StatusCodes.NOT_FOUND).json({error:{default:'registro não encontrado'}});
   }
 
-  return res.status(StatusCodes.OK).send("Não implementado");
+  return res.status(StatusCodes.NO_CONTENT).send("Não implementado");
 };

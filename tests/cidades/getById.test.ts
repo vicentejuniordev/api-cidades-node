@@ -6,7 +6,7 @@ describe('get-by-id-test', ()=>{
   it('Pegar registro por id', async ()=>{
     const res = await testServer.get('/cidades/3');
     
-    expect(res.statusCode).toEqual(StatusCodes.OK);
+    expect(res.statusCode).toEqual(StatusCodes.NO_CONTENT);
   });
 
   it('busca registro que não existe', async ()=>{
