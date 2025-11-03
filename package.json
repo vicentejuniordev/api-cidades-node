@@ -7,6 +7,10 @@
     "start": "npx ts-node-dev ./src/index.ts",
     "test": "jest",
     "postinstall": "tsc",
+    "knex:migrate": "npx knex --knexfile ./src/server/database/knex/Enviroment.ts migrate:latest",
+    "knex:rollback": "npx knex --knexfile ./src/server/database/knex/Enviroment.ts migrate:rollback",
+    "knex:rollback:all": "npx knex --knexfile ./src/server/database/knex/Enviroment.ts migrate:rollback --all",
+    "knex:seed": "npx knex --knexfile ./src/server/database/knex/Enviroment.ts seed:run",
     "production": "node ./build/index.js"
   },
   "author": "Vicente Junior",
