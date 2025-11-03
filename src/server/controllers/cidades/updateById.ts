@@ -2,13 +2,14 @@ import { Request, Response } from "express";
 import { validation } from "../../shared/middlewares";
 import * as yup from "yup";
 import { StatusCodes } from "http-status-codes";
+import { ICidade } from "../../database/models";
 
 
 interface IParamProps{
   id?: number,
 }
 
-interface IBodyProps{
+interface IBodyProps extends Omit<ICidade, 'id'>{
   nome: string
 }
 
