@@ -10,4 +10,7 @@ const getEnviroment = () =>{
 
 };
 
-export const Knex = knex(getEnviroment());
+
+const KnexInstace = knex(getEnviroment());
+
+export default KnexInstace;
