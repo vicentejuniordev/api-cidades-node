@@ -4,7 +4,7 @@ import KnexInstace from "../../knex";
 export const getAllProvider = async() =>{
   try {
     const data = await KnexInstace(ETableNames.cidade).select("*");
-    if(!data){
+    if(data.length === 0){
       return new Error("Tabela sem dados...");
     }else{
       return data;
