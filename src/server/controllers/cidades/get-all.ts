@@ -2,6 +2,7 @@ import * as yup from "yup";
 import { validation } from "../../shared/middlewares";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { getAllProvider } from "../../database/provider/cidades/Get-All";
 
 
 interface IQueryParams {
@@ -23,5 +24,15 @@ export const getAll = async (req: Request<{},{},{}, IQueryParams>, res: Response
   res.setHeader('access-control-expose-headers', 'x-total-count');
   res.setHeader('x-total-count', 1);
 
-  return res.status(StatusCodes.OK).json([{id: 1, nome: 'Floriano'}]);
+  const data = await getAllProvider();
+
+  if(data instanceof Error){
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors:{
+        default: data.message
+      }
+    });
+  }
+
+  return res.status(StatusCodes.OK).json(data);
 };
