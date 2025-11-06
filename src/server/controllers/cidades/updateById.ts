@@ -3,6 +3,7 @@ import { validation } from "../../shared/middlewares";
 import * as yup from "yup";
 import { StatusCodes } from "http-status-codes";
 import { ICidade } from "../../database/models";
+import { updateByIdProvider } from "../../database/provider/cidades/UpdateById";
 
 
 interface IParamProps{
@@ -24,15 +25,18 @@ export const updateByIdValidation = validation((getSchema)=>({
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res:Response ) =>{
-  console.log(req.params);
-  const id = Number(req.params.id);
-  console.log(req.body);
+  const update: ICidade = {id: req.params.id, nome:req.body.nome};
 
-  if(id > 3){
-    return res.status(StatusCodes.NOT_FOUND).json({error:{default:'Registro não existe'}});
+  const data = await updateByIdProvider(update);
 
+  if(data instanceof Error){
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      error:{
+        default: data.message
+      }
+    });
   }
 
 
-  return res.status(StatusCodes.NO_CONTENT).send();
+  return res.status(StatusCodes.OK).json({message: 'Cidade atualizada com sucesso'});
 };
