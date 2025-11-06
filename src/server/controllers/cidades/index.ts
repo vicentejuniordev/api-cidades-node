@@ -1,6 +1,6 @@
 import * as create from "./create-city";
 import * as getAll from "./get-all";
-import * as getById from "./getById";
+import * as getById from "./getByName";
 import * as deleteById from "./deleteById";
 import * as updateById from "./updateById";
 
