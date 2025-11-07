@@ -4,7 +4,8 @@ import { testServer } from "../jest.setup";
 
 describe('test-update-by-id',()=>{
   it('atualiza registro', async ()=>{
-    const res = await testServer.put('/cidades/1').send({nome:'Floriano'});
+    const created = await testServer.post('/cidades').send({nome:'Floriano'});
+    const res = await testServer.put(`/cidades/${created.body.id}`).send({nome:'Floriano'});
 
     expect(res.statusCode).toEqual(StatusCodes.OK);
   });

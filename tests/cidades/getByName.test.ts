@@ -12,9 +12,12 @@ describe('get-by-name-test', ()=>{
   });
 
   it('busca registro que não existe', async ()=>{
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const created = await testServer.post('/cidades').send({nome:"Floriano"});
     const res = await testServer.get('/cidades/Floria');
+    
 
     expect(res.statusCode).toEqual(StatusCodes.NOT_FOUND);
-    expect(res.body).toHaveProperty('errors.default');
+    expect(res.body).toHaveProperty('error.default');
   });
 });
