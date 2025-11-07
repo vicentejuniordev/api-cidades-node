@@ -20,7 +20,7 @@ export const deleteById = async (req: Request<IParamProps>, res: Response) =>{
   const is_del = await deleteProvider(id);
 
   if(is_del instanceof Error){
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    return res.status(StatusCodes.NOT_FOUND).json({
       errors:{
         default: is_del.message
       }

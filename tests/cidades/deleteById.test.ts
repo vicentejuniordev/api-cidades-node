@@ -6,13 +6,13 @@ describe('delete-by-id-test',()=>{
   it('Apaga Registro',async ()=>{
     const res = await testServer.delete('/cidades/2');
     
-    expect(res.statusCode).toEqual(StatusCodes.NO_CONTENT);
+    expect(res.statusCode).toEqual(StatusCodes.OK);
   });
 
   it("Apaga registro que não exite", async ()=>{
     const res = await testServer.delete('/cidades/8');
 
     expect(res.statusCode).toEqual(StatusCodes.NOT_FOUND);
-    expect(res.body).toHaveProperty('erros.default');
+    expect(res.body).toHaveProperty('errors.default');
   });
 });

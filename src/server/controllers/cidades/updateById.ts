@@ -30,7 +30,7 @@ export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res:
   const data = await updateByIdProvider(update);
 
   if(data instanceof Error){
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    return res.status(StatusCodes.NOT_FOUND).json({
       error:{
         default: data.message
       }
