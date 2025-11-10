@@ -40,7 +40,7 @@ npm run knex:rollback
 npm start
 ```
 
-### Tests
+## 🔎 Tests
 Para fazer os tests usei o jest onde foi a minha primeira experiência com tests, achei ele bem intuitivo e simples de usar, por conta disso deixei ele como o padrão
 #### Para executar os tests
 ```bash
