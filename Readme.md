@@ -63,4 +63,10 @@ Para fazer os tests usei o jest onde foi a minha primeira experiência com tests
 ```bash
 npm run test
 ```
-
+## 🤝 Contribuição
+Contribuições são sempre bem-vindas!  
+1. Faça um fork do projeto  
+2. Crie uma branch para sua feature  
+3. Commit suas mudanças 
+4. Envie (`git push origin feature/nova-feature`)  
+5. Abra um Pull Request
