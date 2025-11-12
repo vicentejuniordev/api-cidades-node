@@ -3,7 +3,7 @@ import { server } from './server/server';
 
 const startServer = () =>{
   server.listen(process.env.PORT || 3333, ()=> {
-    console.log(`Sever is running in port ${process.env.PORT || 3333}`);
+    console.log(`Server is running in port ${process.env.PORT || 3333}`);
 });
 };
 

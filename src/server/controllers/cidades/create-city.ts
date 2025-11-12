@@ -12,6 +12,11 @@ type IBodyProps = Omit<ICidade, 'id'>
 export const createValidation = validation((getSchema) => ({
   body: getSchema<IBodyProps>(yup.object().shape({
     nome: yup.string().required().min(3),
+    descricao : yup.string().required().min(10),
+    areaTerritorial : yup.number().required(),
+    pibPerCapita : yup.number().required(),
+    idhm : yup.number().required(),
+    populacao : yup.number().required()
   }))
 }));
 

@@ -4,7 +4,7 @@ import { testServer } from "../jest.setup";
 
 describe('delete-by-id-test',()=>{
   it('Apaga Registro',async ()=>{
-    const created = await testServer.post('/cidades').send({nome : 'Floriano'});
+    const created = await testServer.post('/cidades').send({nome : 'Floriano', descricao: 'Cidade histórica no Piauí, famosa por seus festivais culturais e culinária típica.', areaTerritorial: 2300.0, pibPerCapita: 15000.00, idhm: 0.712, populacao: 60000});
     const res = await testServer.delete(`/cidades/${created.body.id}`);
     
     expect(res.statusCode).toEqual(StatusCodes.OK);

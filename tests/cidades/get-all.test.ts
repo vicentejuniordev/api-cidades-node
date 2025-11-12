@@ -5,7 +5,13 @@ import { testServer } from "../jest.setup";
 describe('getAll-controller-test', ()=>{
   it('get-all-test', async ()=>{
 
-    const res = await testServer.post('/cidades').send({nome: 'Barão de Grajaú',});
+    const res = await testServer.post('/cidades').send({nome: 'Barão de Grajaú',
+    descricao: 'Cidade localizada no estado do Maranhão, conhecida por sua cultura rica e tradições.',
+    areaTerritorial: 1500.5,
+    pibPerCapita: 12000.75,
+    idhm: 0.689,
+    populacao: 45000
+    });
 
     expect(res.statusCode).toEqual(StatusCodes.CREATED);
 

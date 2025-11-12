@@ -8,7 +8,12 @@ export async function up(knex: Knex): Promise<void> {
    .createTable(ETableNames.cidade, table =>{
      table.bigIncrements('id').primary().index(); // O index indica que vamos usar essa coluna para fazer consultas.
      table.string('nome', 150).index().notNullable();
-
+      table.text('descricao').notNullable();
+      table.float('areaTerritorial').notNullable();
+      table.float('pibPerCapita').notNullable();
+      table.float('idhm').notNullable();
+      table.integer('populacao').notNullable();
+      
      table.comment('Tabela que armazena informações de cidades');
    
     })
