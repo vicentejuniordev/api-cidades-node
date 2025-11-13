@@ -11,7 +11,7 @@ export const development: Knex.Config = {
     directory: path.resolve(__dirname,'..','migrations')
   },
   seeds:{
-    directory: path.resolve(__dirname, '..','seed')
+    directory: path.resolve(__dirname, '..','seeds')
   },
   //O pool ele faz com que o Knex use as foreign keys das tabelas, assim garantido a intgridade referencial do Banco.
   pool:{
