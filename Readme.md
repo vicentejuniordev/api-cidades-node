@@ -55,7 +55,7 @@ Descreva as rotas principais e exemplos de uso.
 | GET    | /cidades         | Lista todas as cidades |
 | POST   | /cidades         | Cria uma nova cidade   |
 | PUT    | /cidades/:id     | Atualiza uma cidade    |
-| DELETE | /tasks/:id       | Deletar uma cidade     |
+| DELETE | /cidades/:id       | Deletar uma cidade     |
 ```
 ## 🔎 Tests
 Para fazer os tests usei o jest onde foi a minha primeira experiência com tests, achei ele bem intuitivo e simples de usar, por conta disso deixei ele como o padrão
